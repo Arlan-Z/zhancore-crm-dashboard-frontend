@@ -14,7 +14,7 @@ const contact: Contact = {
 
 <template>
   <div class="contact-list-wrapper">
-    <Sidebar/>
+    <Sidebar active-page="contacts"/>
 
     <div class="contact-table">
       <div class="table-header grid-column-5">

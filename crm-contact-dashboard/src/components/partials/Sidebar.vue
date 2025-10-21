@@ -1,11 +1,26 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineProps<{
+  activePage: 'dashboard' | 'contacts'
+}>();
+</script>
 
 <template>
   <aside class="sidebar-wrapper">
     <h2 class="sidebar-title">Contact Dashboard</h2>
     <nav class="sidebar-nav">
-      <button class="nav-btn">Dashboard</button>
-      <button class="nav-btn active">Contacts</button>
+      <button
+       class="nav-btn"
+      :class="{ active: activePage === 'dashboard' }"
+      >
+      Dashboard
+    </button>
+
+      <button 
+        class="nav-btn active"
+        :class="{ active: activePage === 'contacts' }"
+        >
+        Contacts
+      </button>
     </nav>
   </aside>
 </template>
