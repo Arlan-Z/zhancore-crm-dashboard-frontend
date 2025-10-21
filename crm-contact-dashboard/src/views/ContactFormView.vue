@@ -25,7 +25,7 @@ onMounted(async () => {
       <ContactForm :contact="contact" />
     </div>
 
-    <Loading v-else/>
+    <Loading v-else class="loading"/>
   </div>
 </template>
 
