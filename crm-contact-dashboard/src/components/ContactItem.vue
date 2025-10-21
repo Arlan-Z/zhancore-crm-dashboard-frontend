@@ -14,23 +14,43 @@ const modifiedOnFormatted = computed(() =>
 </script>
 
 <template>
-  <p>{{ contact.name }}</p>
-  <p>{{ contact.details }}</p>
-  <p>{{ contact.message }}</p>
-  <p>{{ createdOnFormatted }}</p>
-  <p>{{ modifiedOnFormatted }}</p>
+  <div class="contact-item grid-column-5">
+    <p>{{ contact.name }}</p>
+    <p>{{ contact.details }}</p>
+    <p>{{ contact.message }}</p>
+    <p>{{ createdOnFormatted }}</p>
+    <p>{{ modifiedOnFormatted }}</p>
+  </div>
 </template>
 
 <style scoped>
-p {
+.contact-item {
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  padding: 14px 20px;
+  transition: background-color 0.25s, transform 0.25s;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.contact-item:hover {
+  background-color: #a5aed0;
+  color: white;
+}
+
+.contact-item p {
   margin: 0;
-  padding: 10px;
+  color: #2d2f39;
+  font-weight: 400;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  transition: color 0.25s;
+  text-align: center;
 }
 
-p + p {
-  border-left: 2px solid #ddd;
+.contact-item:hover p {
+  color: white;
 }
 </style>
