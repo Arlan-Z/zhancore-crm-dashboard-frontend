@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import type Contact from '@/models/contact';
 import { computed } from 'vue';
+import { useRouter } from 'vue-router';
 
 const props = defineProps<{ contact: Contact }>();
+const router = useRouter();
 
 const createdOnFormatted = computed(() =>
   new Date(props.contact.createdOn).toLocaleString()
@@ -11,10 +13,15 @@ const createdOnFormatted = computed(() =>
 const modifiedOnFormatted = computed(() =>
   new Date(props.contact.modifiedOn).toLocaleString()
 );
+
+
+const goToForm = () => {
+  router.push(`/contacts/${props.contact.id}`);
+};
 </script>
 
 <template>
-  <div class="contact-item grid-column-5">
+  <div class="contact-item grid-column-5" @click="goToForm">
     <p>{{ contact.name }}</p>
     <p>{{ contact.details }}</p>
     <p>{{ contact.message }}</p>

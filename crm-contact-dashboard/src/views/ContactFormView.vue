@@ -5,6 +5,7 @@ import ContactForm from '@/components/ContactForm.vue';
 import type Contact from '@/models/contact';
 import { getContacts } from '@/services/api';
 import Sidebar from '@/components/partials/Sidebar.vue';
+import Loading from '@/components/partials/Loading.vue';
 
 const route = useRoute();
 const contact = ref<Contact | null>(null);
@@ -23,9 +24,8 @@ onMounted(async () => {
     <div v-if="contact">
       <ContactForm :contact="contact" />
     </div>
-    <div v-else class="loading">
-      <p>Loading contact...</p>
-    </div>
+
+    <Loading v-else/>
   </div>
 </template>
 

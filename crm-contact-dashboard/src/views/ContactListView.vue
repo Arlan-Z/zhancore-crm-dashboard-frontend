@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import ContactItem from '@/components/ContactItem.vue';
+import Loading from '@/components/partials/Loading.vue';
 import Sidebar from '@/components/partials/Sidebar.vue';
 import type Contact from '@/models/contact';
 import { getContacts } from '@/services/api';
@@ -25,12 +26,15 @@ onMounted(async () => {
         <span>Modified On</span>
       </div>
 
-      <ContactItem 
+      <ContactItem v-if="contacts.length > 0"
         v-for="contact in contacts" 
         :key="contact.id" 
         :contact="contact" 
       />
+
+      <Loading v-else/>
     </div>
+
   </div>
 </template>
 
