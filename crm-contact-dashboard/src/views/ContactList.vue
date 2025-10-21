@@ -2,14 +2,14 @@
 import ContactItem from '@/components/ContactItem.vue';
 import Sidebar from '@/components/partials/Sidebar.vue';
 import type Contact from '@/models/contact';
+import { getContacts } from '@/services/api';
+import { onMounted, ref } from 'vue';
 
-const contact: Contact = {
-  name: "Arlan Zhumagulov",
-  details: "+77771234567",
-  message: "Need CRM",
-  createdOn: new Date(Date.now() - 200000),
-  modifiedOn: new Date(Date.now() - 20000)
-}
+const contacts = ref<Contact[]>([]);
+
+onMounted(async () => {
+  contacts.value = await getContacts();
+});
 </script>
 
 <template>
@@ -25,7 +25,11 @@ const contact: Contact = {
         <span>Modified On</span>
       </div>
 
-      <ContactItem :contact="contact" />
+      <ContactItem 
+        v-for="contact in contacts" 
+        :key="contact.id" 
+        :contact="contact" 
+      />
     </div>
   </div>
 </template>

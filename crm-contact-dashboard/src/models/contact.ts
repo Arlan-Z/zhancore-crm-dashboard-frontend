@@ -1,7 +1,8 @@
 export default interface Contact {
-  name: string,
-  details: string,
-  message: string,
-  createdOn: Date,
-  modifiedOn: Date,
+  id: number;
+  name: string;
+  details: string;
+  message: string;
+  createdOn: Date;
+  modifiedOn: Date;
 }
