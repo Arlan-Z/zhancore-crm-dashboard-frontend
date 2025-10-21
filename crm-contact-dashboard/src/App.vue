@@ -1,10 +1,4 @@
-<script setup lang="ts">
-import ContactList from './views/ContactList.vue';
-
-</script>
-
 <template>
-  <ContactList/>
+  <router-view />
 </template>
 
-<style scoped></style>
