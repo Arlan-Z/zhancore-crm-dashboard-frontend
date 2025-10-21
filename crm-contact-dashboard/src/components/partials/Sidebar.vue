@@ -16,7 +16,7 @@ defineProps<{
     </button>
 
       <button 
-        class="nav-btn active"
+        class="nav-btn"
         :class="{ active: activePage === 'contacts' }"
         >
         Contacts
