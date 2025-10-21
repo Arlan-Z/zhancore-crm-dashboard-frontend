@@ -1,7 +1,16 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router';
+
 defineProps<{
   activePage: 'dashboard' | 'contacts'
 }>();
+
+const router = useRouter();
+
+const goTo = (page: 'dashboard' | 'contacts') => {
+  if (page === 'dashboard') router.push({ name: 'dashboard' });
+  if (page === 'contacts') router.push({ name: 'contacts' });
+};
 </script>
 
 <template>
@@ -9,8 +18,9 @@ defineProps<{
     <h2 class="sidebar-title">Contact Dashboard</h2>
     <nav class="sidebar-nav">
       <button
-       class="nav-btn"
+      class="nav-btn"
       :class="{ active: activePage === 'dashboard' }"
+      @click="goTo('dashboard')"
       >
       Dashboard
     </button>
@@ -18,6 +28,7 @@ defineProps<{
       <button 
         class="nav-btn"
         :class="{ active: activePage === 'contacts' }"
+        @click="goTo('contacts')"
         >
         Contacts
       </button>
@@ -35,6 +46,10 @@ defineProps<{
   align-items: center;
   padding: 40px 16px;
   box-shadow: 4px 0 8px rgba(0,0,0,0.15);
+  box-sizing: border-box;
+  position: sticky; 
+  top: 0;            
+  height: 100vh;    
 }
 
 .sidebar-title {
